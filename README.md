@@ -64,6 +64,18 @@ Video created with Screencastify.
 
 Video Link:
 
+#### To create the schema from the MySQL shell, to create the schema from the MySQL shell and start the application’s server.
+
+https://drive.google.com/file/d/1vR53p2s5VK5ikOvQjIy0MGz76kqit6NV/view
+
+#### GET routes for all categories, all products, and all tags being tested in Insomnia Core & GET routes for a single category, a single product, and a single tag being tested in Insomnia Core.
+
+https://drive.google.com/file/d/1H7JIpIEIG2lFJX_epijfN8U34N_4lRlh/view
+
+#### POST, PUT, and DELETE routes for categories, products, and tags being tested in Insomnia Core.
+
+https://drive.google.com/file/d/1S2LQEG8S2dOcEsj2aOiFO6JHg4MmTfd2/view
+
 ## Screenshot
 
 ![E-commerce Back End](screenshot1.jpg)
