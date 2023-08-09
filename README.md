@@ -33,13 +33,26 @@ The challenge is to build the back end for an e-commerce site. You’ll take a w
 - Includes column definitions for all four models outlined in the Challenge instructions.
 - Includes model associations outlined in the Challenge instructions.
 
-## Completed
-
-## Future Development
-
 ## Installation
 
+- Navigate to the develop folder using the command prompt
+- npm init -y
+- npm i mysql2
+- npm i sequelize
+- npm i dotenv
+
 ## Usage
+
+- Copy .env.EXAMPLE, Paste and rename to .env
+- In .env enter database name, username and your password
+- Run mysql -u root -p
+- Enter Password
+- Run source db/schema.sql
+- Quit from mysql
+- Run index.js inside Seeds folder
+- Run npm start
+- Open Insomnia
+- To end your server in your command prompt type: Ctrl + c
 
 ## Contributing
 
@@ -62,6 +75,8 @@ Video Link:
 - [Node.js](https://nodejs.org/en/)
 - [npmjs](https://docs.npmjs.com/)
 - [inquirer](https://www.npmjs.com/package/inquirer)
+- Sequelize ORM
+- dotenv
 
 ## Github
 
