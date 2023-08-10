@@ -3,8 +3,10 @@ const { Product, Category, Tag, ProductTag } = require("../../models");
 
 // The `/api/products` endpoint
 
-// get all products
-router.get("/", (req, res) => {
+// Get all products
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.get("/", async (req, res) => {
   // find all products
   console.log("-------------------");
   Product.findAll({
@@ -29,8 +31,10 @@ router.get("/", (req, res) => {
     });
 });
 
-// get one product
-router.get("/:id", (req, res) => {
+// Get a product based on the 'id'
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.get("/:id", async (req, res) => {
   // find a single product by its `id`
   Product.findOne({
     where: {
@@ -62,8 +66,10 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// create new product
-router.post("/", (req, res) => {
+// CREATE a new Product
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.post("/", async (req, res) => {
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -94,8 +100,10 @@ router.post("/", (req, res) => {
     });
 });
 
-// update product
-router.put("/:id", (req, res) => {
+//Update product base on its 'id'
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.put("/:id", async (req, res) => {
   // update product data
   Product.update(req.body, {
     where: {
@@ -138,9 +146,13 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+// Delete route for a product with a matching 'id'
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.delete("/:id", async (req, res) => {
   // delete one product by its `id` value
   console.log("id", req.params.id);
+  // Looks for the product based on 'id' given in the request parameters and deletes the instance from the database
   Product.destroy({
     where: {
       id: req.params.id,

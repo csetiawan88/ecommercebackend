@@ -4,9 +4,11 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // Initialize Product model (table) by extending off Sequelize's Model class
+// Create a new Sequelize model for Product
 class Product extends Model {}
 
 // set up fields and rules for Product model
+
 Product.init(
   {
     // define columns
@@ -19,6 +21,8 @@ Product.init(
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      // prevents duplicate product name in DB
+      unique: true,
     },
     price: {
       type: DataTypes.DECIMAL,
@@ -44,7 +48,9 @@ Product.init(
     },
   },
   {
+    // Link to database connection
     sequelize,
+    // Set to false to remove `created_at` and `updated_at` fields
     timestamps: false,
     freezeTableName: true,
     underscored: true,

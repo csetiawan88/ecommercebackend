@@ -2,6 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection");
 
+// Create a new Sequelize model for ProductTag
 class ProductTag extends Model {}
 
 ProductTag.init(
@@ -29,7 +30,9 @@ ProductTag.init(
     },
   },
   {
+    // Link to database connection
     sequelize,
+    // Set to false to remove `created_at` and `updated_at` fields
     timestamps: false,
     freezeTableName: true,
     underscored: true,

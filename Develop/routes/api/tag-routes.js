@@ -3,7 +3,10 @@ const { Tag, Product, ProductTag } = require("../../models");
 
 // The `/api/tags` endpoint
 
-router.get("/", (req, res) => {
+// Get all tag
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.get("/", async (req, res) => {
   // find all tags
   Tag.findAll({
     attributes: ["id", "tag_name"],
@@ -22,7 +25,10 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+// Get a tag based on the 'id'
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.get("/:id", async (req, res) => {
   // find a single tag by its `id`
   Tag.findOne({
     where: {
@@ -49,11 +55,17 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+// CREATE a new Tag
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.post("/", async (req, res) => {
   // create a new tag
+  // Use Sequelize's `create()` method to add a row to the table
+  // Similar to `INSERT INTO` in plain SQL
   Tag.create({
     tag_name: req.body.tag_name,
   })
+    // Send the newly created row as a JSON object
     .then((dbTagData) => res.json(dbTagData))
     .catch((err) => {
       console.log(err);
@@ -61,7 +73,10 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+//Update tag category base on its 'id'
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.put("/:id", async (req, res) => {
   // update a tag's name by its `id` value
   Tag.update(
     {
@@ -86,9 +101,13 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+// Delete route for a category with a matching 'id'
+// This route uses async/await with try/catch for errors
+// along with HTTP status codes
+router.delete("/:id", async (req, res) => {
   // delete on tag by its `id` value
   console.log("id", req.params.id);
+  // Looks for the tag based on 'id' given in the request parameters and deletes the instance from the database
   Tag.destroy({
     where: {
       id: req.params.id,
