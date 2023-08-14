@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
       },
     ],
   })
-    .then((dbProductData) => res.json(dbProductData))
+    .then((dbProductData) => res.json(dbProductData)) // Can use .catch and try too
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -55,7 +55,7 @@ router.get("/:id", async (req, res) => {
   })
     .then((dbProductData) => {
       if (!dbProductData) {
-        res.status(404).json({ message: "No product found with this id" });
+        res.status(404).json({ message: "No product found with this id" }); // Can use .catch and try too
         return;
       }
       res.json(dbProductData);
@@ -93,7 +93,7 @@ router.post("/", async (req, res) => {
       // if no product tags, just respond
       res.status(200).json(product);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then((productTagIds) => res.status(200).json(productTagIds)) // Can use .catch and try too
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -116,7 +116,7 @@ router.put("/:id", async (req, res) => {
           where: { product_id: req.params.id },
         }).then((productTags) => {
           // create filtered list of new tag_ids
-          const productTagIds = productTags.map(({ tag_id }) => tag_id);
+          const productTagIds = productTags.map(({ tag_id }) => tag_id); // Can use .catch and try too
           const newProductTags = req.body.tagIds
             .filter((tag_id) => !productTagIds.includes(tag_id))
             .map((tag_id) => {
@@ -159,6 +159,7 @@ router.delete("/:id", async (req, res) => {
     },
   })
     .then((dbProductData) => {
+      // Can use .catch and try too
       if (!dbProdcutData) {
         res.status(404).json({ message: "No Product found with this id" });
         return;

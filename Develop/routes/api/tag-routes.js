@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
       },
     ],
   })
-    .then((dbCategoryData) => res.json(dbCategoryData))
+    .then((dbCategoryData) => res.json(dbCategoryData)) // Can use .catch and try too
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -43,6 +43,7 @@ router.get("/:id", async (req, res) => {
     ],
   })
     .then((dbCategoryData) => {
+      // Can use .catch and try too
       if (!dbCategoryData) {
         res.status(404).json({ message: "No category found with this id" });
         return;
@@ -89,6 +90,7 @@ router.put("/:id", async (req, res) => {
     }
   )
     .then((dbTagData) => {
+      // Can use .catch and try too
       if (!dbTagData) {
         res.status(404).json({ message: "No Tag found with this id" });
         return;
@@ -114,6 +116,7 @@ router.delete("/:id", async (req, res) => {
     },
   })
     .then((dbTagData) => {
+      // Can use .catch and try too
       if (!dbTagData) {
         res.status(404).json({ message: "No Tag found with this id" });
         return;
